@@ -6,32 +6,50 @@ namespace WeatherCalculator2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("### Weather Calculator 2");
-
+            Console.WriteLine("BASIC WEATHER CALCULATOR 2.0");
             int temperature;
-            int windSpeed;
-            double windChill;
-            string input = "";
+            double RH;
+            double HI;
+            String input;
+            double WindChill;
+            int windspeed;
 
-            // Get the temperature from the user
-            Console.WriteLine("Enter the temperature");
-
+            Console.WriteLine("Enter Temperature");
             input = Console.ReadLine();
-
             temperature = int.Parse(input);
 
-            // Get the windspeed from the user
-            Console.WriteLine("Enter the wind speed");
 
-            input = Console.ReadLine();
 
-            windSpeed = int.Parse(input);
 
-            // Calculate the wind chill
+            if (temperature > 50)
+            {
+                Console.WriteLine("Enter Relative Humidity");
+                input = Console.ReadLine();
+               RH = int.Parse(input);
 
-            windChill = 35.74 + (0.6125 * temperature) - 35.75 * Math.Pow(windSpeed, 0.16) + 0.4275 * temperature * Math.Pow(windSpeed, 0.16);
+                HI = 0.5 * (temperature + 61.0 + ((temperature - 68) * 1.2) + (RH * 0.049));
+                Console.WriteLine("Heat Index is" + HI);
+            }
 
-            Console.WriteLine("The wind chill is " + windChill);
+            else
+            {
+                Console.WriteLine("Enter Wind Speed");
+                input = Console.ReadLine();
+                windspeed = int.Parse(input);
+
+
+                WindChill = 35.74 + (0.6125 * temperature) - 35.75 * Math.Pow(windspeed, 0.6) + 0.4275 * temperature * Math.Pow(windspeed, 0.16);
+                Console.WriteLine("Windchill is" + WindChill);
+
+            }
+
         }
     }
 }
+           
+                
+
+        
+
+            
+
